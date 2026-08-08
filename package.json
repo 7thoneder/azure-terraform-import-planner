@@ -1,0 +1,15 @@
+{
+  "name": "azure-terraform-import-planner",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop app for finding Azure resources missing from Terraform state and generating Terraform import blocks.",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "desktop": "electron desktop",
+    "desktop:package": "electron-packager desktop AzureTerraformImportPlanner --platform=win32 --arch=x64 --out=outputs --overwrite"
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.1.1",
+    "electron": "^43.3.0"
+  }
+}
