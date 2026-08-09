@@ -30,6 +30,8 @@ The `.gitignore` excludes generated and local files such as:
 pnpm install
 ```
 
+Commit the generated `pnpm-lock.yaml` after this install. The lockfile should include `electron`, `@electron/packager`, and `electron-builder`.
+
 ## Run The App During Development
 
 ```bash
@@ -40,6 +42,22 @@ pnpm run desktop
 
 ```bash
 pnpm run desktop:package
+```
+
+## Build A Signed Installer
+
+Set signing certificate variables first:
+
+```powershell
+$env:CSC_LINK="C:\certs\company-code-signing-cert.pfx"
+$env:CSC_KEY_PASSWORD="your-certificate-password"
+pnpm run installer:signed
+```
+
+Installer output is written to:
+
+```text
+release/
 ```
 
 ## Azure Setup Reminder
