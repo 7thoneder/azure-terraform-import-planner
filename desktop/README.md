@@ -87,6 +87,20 @@ pnpm run desktop:package
 
 The packaged app is written to `outputs/AzureTerraformImportPlanner-win32-x64`.
 
+Build an NSIS installer:
+
+```bash
+pnpm run installer
+```
+
+Build a signed installer after setting `CSC_LINK` and `CSC_KEY_PASSWORD`:
+
+```powershell
+$env:CSC_LINK="C:\certs\company-code-signing-cert.pfx"
+$env:CSC_KEY_PASSWORD="your-certificate-password"
+pnpm run installer:signed
+```
+
 ## Notes
 
 - The Terraform type mapping covers common AzureRM resources. Unknown resource types are emitted as `azapi_resource` and marked as manual.

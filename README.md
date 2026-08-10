@@ -18,7 +18,7 @@ Desktop application for finding Azure resources that are not represented in a Te
 
 - Windows
 - Node.js `>=22.13.0`
-- pnpm
+- pnpm -- install with choco in admin mode
 - Azure App Registration with public client flows enabled
 
 ## Azure App Registration
@@ -61,6 +61,30 @@ The packaged app is written to:
 outputs/AzureTerraformImportPlanner-win32-x64
 ```
 
+## Build Windows Installer
+
+Create an NSIS installer:
+
+```bash
+pnpm run installer
+```
+
+Create a signed installer after setting certificate environment variables:
+
+```powershell
+$env:CSC_LINK="C:\certs\company-code-signing-cert.pfx"
+$env:CSC_KEY_PASSWORD="your-certificate-password"
+pnpm run installer:signed
+```
+
+Installer artifacts are written to:
+
+```text
+release/
+```
+
+See [Signed Installer Packaging](docs/Signed-Installer-Packaging.md) for details.
+
 ## Use The App
 
 1. Launch the desktop app.
@@ -88,6 +112,7 @@ desktop/
 
 docs/
   Azure-Terraform-Import-Planner-Desktop-Documentation.md
+  Signed-Installer-Packaging.md
 
 package.json      Root scripts and dependencies
 pnpm-lock.yaml    Dependency lockfile

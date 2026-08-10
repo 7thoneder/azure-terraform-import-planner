@@ -6,10 +6,46 @@
   "main": "desktop/main.cjs",
   "scripts": {
     "desktop": "electron desktop",
-    "desktop:package": "electron-packager desktop AzureTerraformImportPlanner --platform=win32 --arch=x64 --out=outputs --overwrite"
+    "desktop:package": "electron-packager desktop AzureTerraformImportPlanner --platform=win32 --arch=x64 --out=outputs --overwrite",
+    "installer": "electron-builder --win nsis --x64",
+    "installer:dir": "electron-builder --win dir --x64",
+    "installer:signed": "electron-builder --win nsis --x64"
   },
   "devDependencies": {
     "@electron/packager": "^20.1.1",
+    "electron-builder": "^26.0.12",
     "electron": "^43.3.0"
+  },
+  "build": {
+    "appId": "com.azureterraformimportplanner.desktop",
+    "productName": "Azure Terraform Import Planner",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": true,
+      "publisherName": "7thoneder"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Azure Terraform Import Planner"
+    }
   }
 }

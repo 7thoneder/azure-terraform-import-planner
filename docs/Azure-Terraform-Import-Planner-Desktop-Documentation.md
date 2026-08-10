@@ -367,11 +367,32 @@ The app uses Electron context isolation and does not enable Node.js integration 
 ### Packaging
 
 - Electron Packager
+- Electron Builder for NSIS installer packaging and code signing
 
 The Windows desktop bundle is produced with:
 
 ```bash
 pnpm run desktop:package
+```
+
+The Windows installer is produced with:
+
+```bash
+pnpm run installer
+```
+
+The signed Windows installer is produced after setting `CSC_LINK` and `CSC_KEY_PASSWORD`:
+
+```powershell
+$env:CSC_LINK="C:\certs\company-code-signing-cert.pfx"
+$env:CSC_KEY_PASSWORD="your-certificate-password"
+pnpm run installer:signed
+```
+
+Installer artifacts are written to:
+
+```text
+release/
 ```
 
 ### Web App Dependencies Present in Repository

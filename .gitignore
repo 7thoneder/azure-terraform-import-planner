@@ -40,6 +40,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/release/
 
 # desktop app packaging
 /desktop/dist/
@@ -47,6 +48,7 @@ next-env.d.ts
 /desktop/.vite/
 /desktop/node_modules/
 *.asar
+*.blockmap
 
 # editor and OS local files
 .vscode/
